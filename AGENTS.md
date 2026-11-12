@@ -4,11 +4,13 @@
 
 This repository contains a single-page wheel (鋁圈) configurator. Everything lives in `index.html`: inline CSS, inline JavaScript, and a canvas renderer that draws the wheel preview to scale (tire diameter fixed at about 650 mm; bolt circle, center bore, and barrel width derived from PCD, CB, and J). The only external resource is Google Fonts. It is published with GitHub Pages from the root of `main`.
 
+It is also a PWA: `manifest.webmanifest` (relative `start_url`/`scope` so it works under the `/wheel-configurator/` Pages path), `sw.js` (network-first for the page, cache-first for same-origin assets, cached Google Fonts), and icons in `icons/`. Bump `VERSION` in `sw.js` whenever `index.html` or an icon changes so old caches are cleared.
+
 The repository previously held a repair-reporting demo (Supabase-backed). That code was removed; it remains available in Git history.
 
 ## Development
 
-No build step, dependencies, or test framework. Preview locally with `python3 -m http.server 8000` and open http://localhost:8000/. Check both light and dark color schemes and a phone-width viewport (about 390 px) with no horizontal scrolling.
+No build step, dependencies, or test framework. Preview locally with `python3 -m http.server 8000` and open http://localhost:8000/. Service workers need `localhost` or HTTPS; test offline mode from `localhost`. Check both light and dark color schemes and a phone-width viewport (about 390 px) with no horizontal scrolling.
 
 ## Conventions
 
