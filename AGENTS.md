@@ -1,27 +1,23 @@
 # Repository Guidelines
 
-## Project Structure & Module Organization
+## Project Structure
 
-This workspace currently contains only `報修需求筆記.txt`, the requirements for a demonstration repair-reporting system. There is no application code, dependency manifest, test suite, or Git repository yet. Read the requirements before implementing features.
+This repository contains a single-page wheel (鋁圈) configurator. Everything lives in `index.html`: inline CSS, inline JavaScript, and a canvas renderer that draws the wheel preview to scale (tire diameter fixed at about 650 mm; bolt circle, center bore, and barrel width derived from PCD, CB, and J). The only external resource is Google Fonts. It is published with GitHub Pages from the root of `main`.
 
-When implementation begins, organize application code in `src/`, tests in `tests/`, static assets in `public/`, and Supabase schema migrations and policies in `supabase/`. Keep supporting spreadsheets, presentations, and operating instructions in `docs/`. These directories are proposed conventions, not existing components.
+The repository previously held a repair-reporting demo (Supabase-backed). That code was removed; it remains available in Git history.
 
-## Build, Test, and Development Commands
+## Development
 
-No build, test, development, lint, or formatting commands are currently configured. Do not assume that `npm test` or `npm run build` works. When choosing a stack, document its installation, local development, build, and test commands in `README.md`, and commit the appropriate dependency manifest and lockfile.
+No build step, dependencies, or test framework. Preview locally with `python3 -m http.server 8000` and open http://localhost:8000/. Check both light and dark color schemes and a phone-width viewport (about 390 px) with no horizontal scrolling.
 
-## Coding Style & Naming Conventions
+## Conventions
 
-Follow the conventions of the selected language and formatter consistently. No indentation standard or linting tool has been established; configure these when adding code. Use descriptive names such as `RepairForm` and `RepairList`, and keep filenames consistent within each module. Preserve Traditional Chinese labels and the category, urgency, and status values specified in the requirements.
+- Keep Traditional Chinese labels. Option values: sizes 17–20 inch; J 7–12 in 0.5 steps; PCD 5H110, 5H112, 5H114.3, 5H120, 5H130; ET 0–50; CB 50.0–120.0 mm.
+- Spec code format: `{size}x{J}J {PCD} ET{ET} CB{CB}`, for example `18x8.5J 5H114.3 ET35 CB73.1`.
+- Positive ET moves the mounting face toward the outer face, so the wheel sits further inward.
+- Define colors as CSS custom properties with light and dark values; avoid literal colors in component rules.
+- Do not add third-party product photos or brand logos without a license.
 
-## Testing Guidelines
+## Commits
 
-No testing framework or coverage threshold exists yet. Add behavior-focused tests alongside implementation, using the selected framework's standard naming convention. Cover required fields, report submission, list display, and automatically generated registration timestamps. Verify Supabase policies allow public inserts and reads while rejecting updates and deletes.
-
-## Commit & Pull Request Guidelines
-
-There is no Git history from which to infer commit conventions. After Git initialization, use concise imperative subjects, for example `Add repair submission form`. Pull requests should describe the change, reference relevant requirements or issues, record validation performed, and include screenshots for visible interface changes.
-
-## Security & Scope
-
-Use fictional names and locations in all demonstration data. Enable Supabase row-level security before exposing the public client key; never commit privileged service keys. The current demonstration covers submission and listing without login. Status updates, authentication, and notifications remain unresolved requirements; clarify their scope before implementation.
+Use concise imperative subjects. Pull requests should describe the change and include screenshots for visible changes.
