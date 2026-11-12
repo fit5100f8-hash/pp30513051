@@ -18,7 +18,7 @@ No build step, dependencies, or test framework. Preview locally with `python3 -m
 - Spec code format: `{size}x{J}J {PCD} ET{ET} CB{CB}`, for example `18x8.5J 5H114.3 ET35 CB73.1`.
 - Positive ET moves the mounting face toward the outer face, so the wheel sits further inward.
 - Define colors as CSS custom properties with light and dark values; avoid literal colors in component rules.
-- Do not add third-party product photos or brand logos without a license.
+- Do not add third-party product photos or brand logos without a license. The app icons in `icons/` are cropped from an INCURVE wheel photo that the repository owner supplied and confirmed they are licensed to use.
 
 ## Commits
 
